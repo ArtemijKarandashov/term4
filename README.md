@@ -23,6 +23,7 @@
 <br/>
 <h2>Задания 2 и 3</h2>
 Запрос для создания таблицы из задания 2:
+<pre>
 ```
 CREATE TABLE `users` (
   `id` int NOT NULL AUTO_INCREMENT,
@@ -32,3 +33,4 @@ CREATE TABLE `users` (
   UNIQUE KEY `email_UNIQUE` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
 ```
+</pre>
