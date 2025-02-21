@@ -23,7 +23,7 @@
 <br/>
 <h2>Задания 2 и 3</h2>
 Запрос для создания таблицы из задания 2:
-```MySQL
+```
 CREATE TABLE `users` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
