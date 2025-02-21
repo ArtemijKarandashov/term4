@@ -33,10 +33,31 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
 </pre>
 <br/>
-<h2>Задани 4</h2>
+<h2>Заданиe 4</h2>
 <pre>
 INSERT INTO `simpledb`.`users` (`id`, `name`, `email`) VALUES ('1', 'Danil', 'vayzera@yandex.ru');
 INSERT INTO `simpledb`.`users` (`id`, `name`, `email`) VALUES ('2', 'Timofei', 'kirillov-timko@rumbler.ru');
 INSERT INTO `simpledb`.`users` (`id`, `name`, `email`) VALUES ('3', 'Artemii', 'karandashov.artemij@yandex.ru');
 INSERT INTO `simpledb`.`users` (`id`, `name`, `email`) VALUES ('4', 'Dima', 'dimadima@mail.ru');
+</pre>
+<br/>
+<h2>Заданиe 5</h2>
+<pre>
+ALTER TABLE `simpledb`.`users` 
+ADD COLUMN `gender` ENUM('M', 'F') NULL AFTER `email`,
+ADD COLUMN `bday` DATE NULL AFTER `gender`,
+ADD COLUMN `postal_code` VARCHAR(10) NULL AFTER `bday`,
+ADD COLUMN `rating` FLOAT NOT NULL AFTER `postal_code`,
+ADD COLUMN `created` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP AFTER `rating`;
+</pre>
+<br/>
+<h2>Заданиe 5</h2>
+TIMESTAMP CURRENT_TIMESTAMP() Позволяет автоматически добавлять время создания записи в БД с точностью до секунд.
+<pre>
+ALTER TABLE `simpledb`.`users` 
+ADD COLUMN `gender` ENUM('M', 'F') NULL AFTER `email`,
+ADD COLUMN `bday` DATE NULL AFTER `gender`,
+ADD COLUMN `postal_code` VARCHAR(10) NULL AFTER `bday`,
+ADD COLUMN `rating` FLOAT NOT NULL AFTER `postal_code`,
+ADD COLUMN `created` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP AFTER `rating`;
 </pre>
