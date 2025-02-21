@@ -32,8 +32,3 @@ CREATE TABLE `users` (
   UNIQUE KEY `email_UNIQUE` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
 ```
-```
-function test() {
-  console.log("notice the blank line before this function?");
-}
-```
