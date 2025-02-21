@@ -32,3 +32,11 @@ CREATE TABLE `users` (
   UNIQUE KEY `email_UNIQUE` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
 </pre>
+<br/>
+<h2>Задани 4</h2>
+<pre>
+INSERT INTO `simpledb`.`users` (`id`, `name`, `email`) VALUES ('1', 'Danil', 'vayzera@yandex.ru');
+INSERT INTO `simpledb`.`users` (`id`, `name`, `email`) VALUES ('2', 'Timofei', 'kirillov-timko@rumbler.ru');
+INSERT INTO `simpledb`.`users` (`id`, `name`, `email`) VALUES ('3', 'Artemii', 'karandashov.artemij@yandex.ru');
+INSERT INTO `simpledb`.`users` (`id`, `name`, `email`) VALUES ('4', 'Dima', 'dimadima@mail.ru');
+</pre>
