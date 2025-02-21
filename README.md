@@ -61,3 +61,67 @@ ADD COLUMN `postal_code` VARCHAR(10) NULL AFTER `bday`,
 ADD COLUMN `rating` FLOAT NOT NULL AFTER `postal_code`,
 ADD COLUMN `created` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP AFTER `rating`;
 </pre>
+<br/>
+<h2>Заданиe 5</h2>
+TIMESTAMP CURRENT_TIMESTAMP() Позволяет автоматически добавлять время создания записи в БД с точностью до секунд. <br/>
+Столбцы postal_code и bday предоставляют личную информацию, которой пользователь возможно не захочет делиться,а значит они могут бытьь NULL 
+<pre>
+ALTER TABLE `simpledb`.`users` 
+ADD COLUMN `gender` ENUM('M', 'F') NULL AFTER `email`,
+ADD COLUMN `bday` DATE NULL AFTER `gender`,
+ADD COLUMN `postal_code` VARCHAR(10) NULL AFTER `bday`,
+ADD COLUMN `rating` FLOAT NOT NULL AFTER `postal_code`,
+ADD COLUMN `created` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP AFTER `rating`;
+</pre>
+<h2>Задания 6 и 7</h2>
+<pre>
+ALTER TABLE `simpledb`.`users` 
+INSERT INTO `simpledb`.`users` (`name`, `email`, `postal_code`, `gender`, `bday`,
+`rating`) VALUES ('Ekaterina', 'ekaterina.petrova@outlook.com', '145789', 'f',
+'2000-02-11', '1.123');
+INSERT INTO `simpledb`.`users` (`name`, `email`, `postal_code`, `gender`, `bday`,
+`rating`) VALUES ('Paul', 'paul@superpochta.ru', '123789', 'm', '1998-08-12', '1');
+</pre>
+<pre>
+UPDATE `simpledb`.`users` SET `bday` = '2004-09-30' WHERE (`id` = '1');
+UPDATE `simpledb`.`users` SET `bday` = '2004-10-09' WHERE (`id` = '2');
+UPDATE `simpledb`.`users` SET `bday` = '2005-12-24' WHERE (`id` = '3');
+UPDATE `simpledb`.`users` SET `bday` = '2004-01-4' WHERE (`id` = '4');
+</pre>
+<h2>Заданиe 8</h2>
+При удалении связанных записей они пропадают из обоих таблиц.
+<pre>
+CREATE TABLE `simpledb`.`resume` (
+  `resumeid` INT NOT NULL AUTO_INCREMENT,
+  `userid` INT NOT NULL,
+  `title` VARCHAR(100) NOT NULL,
+  `skills` TEXT NULL,
+  `created` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP(),
+  PRIMARY KEY (`resumeid`));
+ALTER TABLE `simpledb`.`resume` 
+ADD CONSTRAINT `userid`
+  FOREIGN KEY (`userid`)
+  REFERENCES `simpledb`.`users` (`id`)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE;
+</pre>
+<h2>Заданиe 9</h2>
+Запросы на добавление новых резюме
+<pre>
+INSERT INTO `simpledb`.`resume` (`resumeid`, `userid`, `title`, `skills`) VALUES ('1', '2', 'Timofei\'s resume', 'wiring, networks and telecommunications');
+INSERT INTO `simpledb`.`resume` (`resumeid`, `userid`, `title`, `skills`) VALUES ('2', '1', 'Danil\'s resume', 'managment');
+</pre>
+При попытке добавление резюме с несуществующим userid выводиться ошибка (Скриншот Error_1)
+<pre>
+INSERT INTO `simpledb`.`resume` (`resumeid`, `userid`, `title`, `skills`, `created`) VALUES ('3', '7', 'WhoKnows', 'AllYouNeed', '');
+</pre>
+Количество резюме для одного пользователя ничем не ограничевается т.к. ни одно из полей не имеет тэга Unique (UQ), а значит userid могут повторяться.
+<h2>Заданиe 10</h2>
+Удаление записи из таблицы users удаляет и соответствующее резюме из resume
+<pre>
+DELETE FROM `simpledb`.`users` WHERE (`id` = '1');
+</pre>
+При обнавлении userid в таблице users оно автоматически обнавляется и в таблице resume (Скриншоты old_id и new_id)
+<pre>
+UPDATE `simpledb`.`users` SET `id` = '1' WHERE (`id` = '2');
+</pre>
