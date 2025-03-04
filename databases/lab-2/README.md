@@ -235,4 +235,7 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 </pre>
 <h2>Задание 3</h2>
+На скриншоте видно, как в разделе Schema появился раздел mydb.
+<h3>Скриншот создания таблиц</h3>
+<img src="https://github.com/ArtemijKarandashov/term4/blob/main/databases/lab-2/task_3.png"></img>
 <h2>Задание 4</h2>
