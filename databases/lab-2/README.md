@@ -73,6 +73,7 @@ SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 </pre>
+Фрагмент начинающийся с `firstModel`.`invoice` и заканчивающийся в конце скрипта относиться к созданию и настройке таблицы invoice.
 <h2>Задане 2</h2>
 SQL Скрипт
 <pre>
