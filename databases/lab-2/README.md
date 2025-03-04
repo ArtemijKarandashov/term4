@@ -163,8 +163,8 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Products` (
   CONSTRAINT `fk_Products_2`
     FOREIGN KEY (`shop_id`)
     REFERENCES `mydb`.`Shops` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
@@ -188,23 +188,23 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Orders` (
   CONSTRAINT `fk_Orders_1`
     FOREIGN KEY (`fio`)
     REFERENCES `mydb`.`users` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT `fk_Orders_2`
     FOREIGN KEY (`shop_id`)
     REFERENCES `mydb`.`Shops` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT `fk_Orders_3`
     FOREIGN KEY (`product_id`)
     REFERENCES `mydb`.`Products` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT `fk_Orders_4`
     FOREIGN KEY (`id`)
     REFERENCES `mydb`.`Deliveries` (`order_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
@@ -224,8 +224,8 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Deliveries` (
   CONSTRAINT `fk_Deliveries_1`
     FOREIGN KEY (`fio`)
     REFERENCES `mydb`.`Orders` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
@@ -239,3 +239,6 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 <h3>Скриншот создания таблиц</h3>
 <img src="https://github.com/ArtemijKarandashov/term4/blob/main/databases/lab-2/task_3.png"></img>
 <h2>Задание 4</h2>
+Также как и в предыдущем задании, данные удаляются и добавляются каскадно, а значит сначала нужно заполнить таблицы users, product_type, deliveries, shops и только после product и orders.
+<br/>
+В products, для foregein keys установлен режим NO ACTION, чтобы при удалении товара из асортимента не удалялись и соответствующие заказы из orders
