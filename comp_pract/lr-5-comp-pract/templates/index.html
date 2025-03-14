@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>basicform</title>
+    </head>
+    <body>
+        <div text-align = "center">
+            <form method="post">
+                <label>Логин в Moodle </label><input type ='text' name='login'/><br/>
+                <label>Время </label><input type ='text', id='time' name='time'/><br/>
+                <input type='submit' value='Send!'/>
+            </form> 
+        </div>
+        <script>
+            let objectDate = new Date();
+
+            var time = objectDate.toLocaleTimeString([], {
+                hourCycle: 'h24',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+
+            document.getElementById('time').value = time;
+        </script>
+    </body>
+</html>
