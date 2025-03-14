@@ -4,7 +4,7 @@
 <br/>
 <p>Ниже приведены скриншоты для сравнения результатов</p>
 <img src='https://github.com/ArtemijKarandashov/term4/blob/main/comp_pract/lr-5-comp-pract/screenshots/task_1_1.png'/><br/>
-<img stc='https://github.com/ArtemijKarandashov/term4/blob/main/comp_pract/lr-5-comp-pract/screenshots/task_1_2.png'/><br/>
+<img src='https://github.com/ArtemijKarandashov/term4/blob/main/comp_pract/lr-5-comp-pract/screenshots/task_1_2.png'/><br/>
 <br>
 <p>Файлы <b>task_2_1.py</b> и <b>task_2_2.py</b> используют один и тот же html файл (templates/index.html). Автоматическая подстановка времени реализована js скриптом.</p>
 <p>Результаты формы записываются в output/user_data.txt.</p>
