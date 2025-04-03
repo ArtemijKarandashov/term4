@@ -8,7 +8,7 @@ def index():
 
 @app.route('/login')
 def login():
-    return jsonify({'author','1149920'})
+    return jsonify({'author':'1149920'})
 
 @app.route('/size2json')
 def size2json():
