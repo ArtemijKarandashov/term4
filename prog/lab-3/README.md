@@ -7,7 +7,7 @@
 <img src="https://raw.githubusercontent.com/ArtemijKarandashov/term4/refs/heads/main/prog/lab-3/sc/sqlite3.jpg">
 ## Пример настройки декоратора
 * Код:
-```ruby
+``` python
 require 'redcarpet'
 markdown = Redcarpet.new("Hello World!")
 puts markdown.to_html
