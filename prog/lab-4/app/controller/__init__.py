@@ -1,0 +1,1 @@
+from app.controller.rates_manager import RatesManager
