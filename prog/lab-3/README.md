@@ -1,11 +1,11 @@
 # Настраиваемый декоратор для логирования
-## Стандартная настройка
+### Стандартная настройка
 <img src="https://raw.githubusercontent.com/ArtemijKarandashov/term4/refs/heads/main/prog/lab-3/sc/stdout.jpg">
-## JSON
+### JSON
 <img src="https://raw.githubusercontent.com/ArtemijKarandashov/term4/refs/heads/main/prog/lab-3/sc/json.jpg">
 ## Sqlite3
 <img src="https://raw.githubusercontent.com/ArtemijKarandashov/term4/refs/heads/main/prog/lab-3/sc/sqlite3.jpg">
-## Пример настройки декоратора
+### Пример настройки декоратора
 
 ```
 @trace(handle=sys.stdout)
