@@ -1,6 +1,6 @@
 # Реализация MVC для CurrencyRates
 ## View
-<img src=""/>
+<img src="https://raw.githubusercontent.com/ArtemijKarandashov/term4/refs/heads/main/prog/lab-5/sc/view.jpg"/>
 
 Для отображения данных пользователю и получения кодов для запросов используется __flask__ в сочетании с шаблонизатором __jinja2__.  
 Шаблон index.html:
@@ -96,7 +96,7 @@ CREATE TABLE IF NOT EXISTS "rates"(
 )
 ```
 
-<img src=""/>  
+<img src="https://raw.githubusercontent.com/ArtemijKarandashov/term4/refs/heads/main/prog/lab-5/sc/db.jpg"/>
 
 ## Контроеллер
 Контроллер реализует CRUD и позволяет работать с базой данных простым вызовом методов. Например метод read() считывает текущие строки таблицы __rates__ и возвращает их в формате списка словарей.
