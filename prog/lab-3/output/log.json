@@ -1,0 +1,40 @@
+{
+    "func_calls": [
+        {
+            "func_name": "b",
+            "call_time": "2025-03-21 13:36:46.311237",
+            "args": [
+                1,
+                2,
+                "somestring"
+            ],
+            "kwargs": {
+                "b": 3
+            }
+        },
+        {
+            "func_name": "b",
+            "call_time": "2025-03-21 13:39:12.297116",
+            "args": [
+                1,
+                2,
+                "somestring"
+            ],
+            "kwargs": {
+                "b": 3
+            }
+        },
+        {
+            "func_name": "b",
+            "call_time": "2025-03-21 13:48:09.125549",
+            "args": [
+                1,
+                2,
+                "somestring"
+            ],
+            "kwargs": {
+                "b": 3
+            }
+        }
+    ]
+}

@@ -1,0 +1,1 @@
+from app.view.view_provider import ViewProvider
