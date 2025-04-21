@@ -5,4 +5,4 @@
 * Left leaf = x*3+1
 * Right leaf = x*3-1
 ## Результат выполнения программы:
-<img src="https://github.com/ArtemijKarandashov/term4/edit/main/prog/lab-1/result.jpg">
+<img src="https://raw.githubusercontent.com/ArtemijKarandashov/term4/refs/heads/main/prog/lab-1/result.jpg">
