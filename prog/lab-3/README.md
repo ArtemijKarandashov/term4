@@ -6,7 +6,7 @@
 ## Sqlite3
 <img src="https://raw.githubusercontent.com/ArtemijKarandashov/term4/refs/heads/main/prog/lab-3/sc/sqlite3.jpg">
 ## Пример настройки декоратора
-Код:
+* Код:
 ```ruby
 require 'redcarpet'
 markdown = Redcarpet.new("Hello World!")
