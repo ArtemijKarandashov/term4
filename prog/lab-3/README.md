@@ -6,7 +6,7 @@
 ## Sqlite3
 <img src="https://raw.githubusercontent.com/ArtemijKarandashov/term4/refs/heads/main/prog/lab-3/sc/sqlite3.jpg">
 ## Пример настройки декоратора
-```
+```python
 @trace(handle=sys.stdout)
 def a(numer,index,string, a=20, b=10):
     pass
