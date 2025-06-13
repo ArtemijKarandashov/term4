@@ -8,13 +8,11 @@ import os
 
 app = FastAPI()
 
-# --- SQLite DB config ---
 os.makedirs("./data", exist_ok=True)
 DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./glossary.db")
 engine = create_engine(DATABASE_URL, echo=False)
 
 
-# --- Модель данных ---
 class Term(SQLModel, table=True):
     keyword: str = Field(primary_key=True)
     description: str
@@ -24,17 +22,14 @@ class TermCreate(BaseModel):
     description: str
 
 
-# --- Создание таблиц ---
 def create_db_and_tables():
     SQLModel.metadata.create_all(engine)
-
 
 @app.on_event("startup")
 def on_startup():
     create_db_and_tables()
 
 
-# --- CRUD ---
 @app.get("/terms", response_model=List[Term])
 def get_all_terms():
     with Session(engine) as session:
@@ -84,13 +79,6 @@ def delete_term(keyword: str):
         return {"result": "deleted successfully"}
 
 
-# --- Прочие маршруты ---
 @app.get("/")
 def read_root():
-    return {"Hello": "World"}
-
-
-@app.get('/author')
-def read_about():
-    locale.setlocale(locale.LC_ALL, 'ru_RU.UTF-8')
-    return {'author': "Nick", "datetime": datetime.now().strftime("%A, %d.%m.%Y, %H:%M").title()}
+    return {"message": "Change url"}
