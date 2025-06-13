@@ -19,7 +19,7 @@ docker-compose up --build
 ---
 
 ## Как должен выглядеть проект после развертывания  
-<img src=""/>  
+<img src="https://raw.githubusercontent.com/ArtemijKarandashov/term4/refs/heads/main/prog/lab-6/screenshots/swagger.jpg"/>  
 
 ---
 
