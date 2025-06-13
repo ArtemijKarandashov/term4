@@ -14,7 +14,7 @@ docker-compose up --build
 ```
 
 3. **Тест работы с помощью Swagger**  
-http://localhost/docs
+http://localhost:8000/docs
 
 ---
 
