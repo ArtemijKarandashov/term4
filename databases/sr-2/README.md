@@ -80,7 +80,7 @@
 Взаимоотношения:
 
 - Каждому пользователю соответствует множество записей с параметрами:  
-  | userid | timestamp | pageviewed | timespent | devicetype |
+userid, timestamp, pageviewed, timespent, devicetype
 - Колонки хранятся по отдельности, что позволяет быстро выполнять агрегацию  
 
 ## ВСР 2.2
