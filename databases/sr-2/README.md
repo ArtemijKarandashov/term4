@@ -23,10 +23,10 @@
 
 Сущности:
 
-- Клиенты (CustomerID, Name, Address)
-- Заказы (OrderID, CustomerID, Date, Total)
-- Товары (ProductID, Title, Price)
-- ЗаказанныеТовары (OrderID, ProductID, Amount)
+- Клиенты (customer_id, name, address)
+- Заказы (order_id, customer_id, date, total)
+- Товары (product_id, title, price)
+- ЗаказанныеТовары (order_id, product_id, amount)
 
 Взаимиотношения:
 
@@ -59,7 +59,7 @@
 
 ```json
 {
-  "user\_id": "123",
+  "user_id": "123",
   "name": "Иванов Иван",
   "friends": ["124", "125"],
   "messages": [
