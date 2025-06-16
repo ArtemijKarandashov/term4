@@ -1,6 +1,6 @@
 # СР-3
 
-# ИСР. phpMyAdmin + предметная область "Магазин"  
+# ИСР + ВСР(Сущности и связи). phpMyAdmin + предметная область "Магазин"  
 
 <img src='./screenshots/phpmyadmin-proof.jpg'/>
 <img src='./screenshots/phpmyadmin-proof-2.jpg'/>
