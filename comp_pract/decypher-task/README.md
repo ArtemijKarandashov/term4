@@ -6,5 +6,8 @@
 ## Демонстрация работы  
 
 <img src="./screenshots/1.jpg"/>
+---
 <img src="./screenshots/2.jpg"/>
+---
 <img src="./screenshots/3.jpg"/>
+---
