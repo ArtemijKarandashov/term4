@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Decypher</title>
+        <link rel="stylesheet" href="/static/style.css" />
+    </head>
+    <body>
+        <div id="root">
+            <div class="wrapper">
+                <form>
+                    <h2>Decypher</h2>
+                    <input type="text" id = "key" name="key" placeholder="key" /><br />
+                    <input type="text" id = "secret" name="secret" placeholder="secret" /><br />
+                </form>
+                <button id = "submit">Submit</button>
+                <hr />
+                <div style="margin-top:10px;">
+                    <h2>Result</h2>
+                    <p id="result" style="text-align: center;">Awaiting...</p>
+                </div>
+            </div>
+        </div>
+        <script src="/static/form-data.js"></script>
+    </body>
+</html>
