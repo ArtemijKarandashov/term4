@@ -1,0 +1,10 @@
+setup.cfg
+setup.py
+lab_3_CBR/__init__.py
+lab_3_CBR/currency_rates.py
+lab_3_CBR/singleton.py
+lab_3_CBR.egg-info/PKG-INFO
+lab_3_CBR.egg-info/SOURCES.txt
+lab_3_CBR.egg-info/dependency_links.txt
+lab_3_CBR.egg-info/not-zip-safe
+lab_3_CBR.egg-info/top_level.txt
