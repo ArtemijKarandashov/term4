@@ -6,9 +6,6 @@ import locale
 from datetime import datetime
 import os
 
-from .models import Term
-from .schemas import TermCreate
-
 app = FastAPI()
 
 os.makedirs("./data", exist_ok=True)
