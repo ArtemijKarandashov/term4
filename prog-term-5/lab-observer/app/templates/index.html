@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Currencies</title>
+        <meta charset="utf-8">
+        <link href = "{{ url_for('static', filename='css/style.css') }}" rel = "stylesheet" />
+    </head>
+    <body>
+        <div style="text-align: center;">
+            <div>
+                <label for="login">Login: </label>
+                <input id="login" name="login" type = "text"><br>
+                <label for="password">Password: </label>
+                <input id="password" name="password" type = "text"><br>
+            </div>
+            <button id="RegBtn" class="auth-btn">Register</button>
+            <button id="LoginBtn" class="auth-btn">Login</button>
+            <button id="LogoutBtn" class="auth-btn">Logout</button>
+        </div>
+
+        <form class="fetch-form" method="post">
+            <label for="charcodes">Enter charcodes: </label>
+            <input id="charcodes" name="charcodes" type = "text">
+            <button class="submit-btn" type="submit">Fetch</button>
+        </form>
+        <table class="rates-table">
+            <tr class="rates-row">
+                <th class="rates-row">Charcode</th>
+                <th class="rates-row">Value</th>
+                <th class="rates-row">Nominal</th>
+                <th class="rates-row">Added</th>
+            </tr>
+            {% for item in rates %}
+            <TR class="rates-row">
+               <TD class="rates-row">{{ item.charcode }}                </TD>
+               <TD class="rates-row">{{ "{:.2f}".format(item.value) }}  </TD>
+               <TD class="rates-row">{{ item.nominal }}                 </TD>
+               <TD class="rates-row">{{ item.added }}                   </TD>
+            </TR>
+            {% endfor %}
+        </table>            
+    </body>
+    <script>
+        registerBtn = document.getElementById("RegBtn");
+        loginBtn = document.getElementById("LoginBtn");
+        logoutBtn = document.getElementById("LogoutBtn");
+
+        loginInput = document.getElementById("login");
+        passwordInput = document.getElementById("password");
+
+        registerBtn.addEventListener('click', function(){
+            const regData = {
+                login: loginInput.value,
+                password: passwordInput.value
+            };
+
+            console.log(JSON.stringify(regData));
+
+            fetch('/api/signup', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json; charset=UTF-8',
+                },
+                    body: JSON.stringify(regData),
+                })
+            .then(response => console.log(response))
+            .catch(error => console.error('Error:', error));
+        });
+
+
+        loginBtn.addEventListener('click', function(){
+            const loginData = {
+                login: loginInput.value,
+                password: passwordInput.value
+            };
+
+            fetch('/api/signin', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json; charset=UTF-8',
+                },
+                body: JSON.stringify(loginData),
+                })
+            .then(response => console.log(response))
+            .catch(error => console.error('Error:', error));
+        });
+
+
+        logoutBtn.addEventListener('click', function(){
+            console.log("LogoutBtn");
+        });
+
+    </script>
+</html>

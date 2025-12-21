@@ -1,0 +1,1 @@
+from app.model.currency_rates import CurrencyRates
