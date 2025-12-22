@@ -15,7 +15,6 @@
             </div>
             <button id="RegBtn" class="auth-btn">Register</button>
             <button id="LoginBtn" class="auth-btn">Login</button>
-            <button id="LogoutBtn" class="auth-btn">Logout</button>
         </div>
 
         <form class="fetch-form" method="post">
@@ -40,6 +39,21 @@
             {% endfor %}
         </table>            
     </body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
+    <script type="text/javascript" charset="utf-8">
+        var socket = io();
+        socket.on('connect', function() {
+            localStorage.setItem('sid', socket.id)
+            socket.emit('my event', {data: 'I\'m connected!'});
+        });
+
+        socket.on('AuthNotification', function() {
+            alert('Please fetch rates!')
+        });
+
+    
+
+    </script>
     <script>
         registerBtn = document.getElementById("RegBtn");
         loginBtn = document.getElementById("LoginBtn");
@@ -71,7 +85,8 @@
         loginBtn.addEventListener('click', function(){
             const loginData = {
                 login: loginInput.value,
-                password: passwordInput.value
+                password: passwordInput.value,
+                sid: localStorage.getItem('sid')
             };
 
             fetch('/api/signin', {
@@ -83,11 +98,6 @@
                 })
             .then(response => console.log(response))
             .catch(error => console.error('Error:', error));
-        });
-
-
-        logoutBtn.addEventListener('click', function(){
-            console.log("LogoutBtn");
         });
 
     </script>

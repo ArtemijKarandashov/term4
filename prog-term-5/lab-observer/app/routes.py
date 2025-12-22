@@ -1,13 +1,16 @@
-from . import app, app_logger
+from . import app, app_logger, socketio
 from .controller.rates_manager import RatesManager
 from .controller.auth_manager import AuthManager
 from flask import render_template, request
+from flask_socketio import emit
+
 
 logger = app_logger.logger
 
-rates = RatesManager()
+rates = RatesManager(db_name="rates.db")
+auth = AuthManager()
 
-auth_manager = AuthManager()
+connected_clients = {}
 
 @app.route('/', methods=['GET','POST'])
 def charcode():
@@ -38,7 +41,7 @@ def signup():
     login = request_data['login']
     password = request_data['password']
 
-    auth_manager.register_user(login,password)
+    auth.register_user(login,password)
     return "Success"
 
 
@@ -47,8 +50,9 @@ def signin():
     request_data = request.get_json()
     login = request_data['login']
     password = request_data['password']
+    sid = request_data['sid']
 
-    auth_manager.login_user(login, password, 1)
+    auth.login_user(login, password, sid)
     return f"{login} succesefuly logged in"
 
 
@@ -58,5 +62,21 @@ def singout():
     login = request_data['login']
     password = request_data['password']
     
-    auth_manager.logout_user(login, password, 1)
+    auth.logout_user(login, password, 1)
     return f"{login} succesefuly logged out"
+
+
+@socketio.on('connect')
+def handle_connect():
+    user_id = request.sid
+    connected_clients[user_id] = request.sid
+    print(f'Client connected: {user_id}')
+    emit('status', {'message': 'You are connected!'}, to=request.sid)
+
+
+@socketio.on('disconnect')
+def handle_disconnect():
+    user_id = request.sid
+    if user_id in connected_clients:
+        del connected_clients[user_id]
+    print(f'Client disconnected: {user_id}')

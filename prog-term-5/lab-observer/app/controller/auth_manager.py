@@ -1,8 +1,9 @@
 from app.tools.singleton import Singleton
-from .. import app_logger
+from .. import app_logger, socketio
 from time import time, sleep
-
 from abc import ABC, abstractmethod
+
+import asyncio
 
 logger = app_logger.logger
 
@@ -17,10 +18,6 @@ class SessionInterface(ABC):
         pass
 
     @abstractmethod
-    async def start(self):
-        pass
-
-    @abstractmethod
     def notify(self):
         pass
 
@@ -32,47 +29,41 @@ class SessionObserverInterface(ABC):
         pass
 
 
+class SessionObserver(SessionObserverInterface):
+
+    def update(self, session: SessionInterface):
+        socketio.emit('AuthNotification', {'message': 'It is time to fetch rates again!'}, to=session.session_id)
+
+
 class Session(SessionInterface):
     _observer: SessionObserverInterface
 
-    def __init__(self, session_id, updated_at, ttn=10): # ttn - time to notify (In seconds)
-        
+    def __init__(self, session_id, updated_at, ttn=10, observer = None): # ttn - time to notify (In seconds)
+
+        self._observer = observer
         self.updated_at = updated_at
         self.ttn = ttn
         self.session_id = session_id
 
-        lifecylce()
+        self.cycle = asyncio.run(self.lifecylce())
     
-    async def lifecylce(self):
-        if await self.start():
-            self._observer.notify()
-        
-        lifecylce()
 
-    async def start(self):
+    async def lifecylce(self):
         sleep(self.ttn)
-        now = time()
-        if self.updated_at + self.ttn >= now:
-            self.updated_at = now
-            return True
-        
-        return False
+        self.updated_at = time()
+        self._observer.update(self)
+
 
     def notify():
         self._observer.update()
-
-
-class SessionObserver(SessionObserverInterface):
-
-    def update(self, session: SessionInterface):
-        logger.info(f'session {session.session_id} notification!!!!')
-        pass
 
 
 class AuthManager(metaclass = Singleton):
     # Primitive login system cuz i'm lazy
     AuthData = {} # Login + Password
     SessionData = {} # Login + Session
+
+    _SessionObserver = SessionObserver()
 
     def __init__(self):
         super().__init__()
@@ -95,9 +86,8 @@ class AuthManager(metaclass = Singleton):
 
 
     def is_login_in_session(self, login):
-        existingLogins = list(self.Session_Id.keys())
+        existingLogins = list(self.SessionData.keys())
         if login not in existingLogins:
-            logger.warning(f"login {login} is not in any session currently")
             return False
         return True
 
@@ -118,7 +108,11 @@ class AuthManager(metaclass = Singleton):
         if not self.auth_check(login, password):
             raise
 
-        self.SessionData[login] = session_id
+        if self.is_login_in_session(login):
+            raise AuthException("User already in session")
+
+        self.SessionData[login] = Session(session_id, time(), observer=self._SessionObserver)
+
         return True
     
 
